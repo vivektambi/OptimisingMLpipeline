@@ -10,19 +10,12 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
-# TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-### YOUR CODE HERE ###
 webpath = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 ds = TabularDatasetFactory.from_delimited_files(webpath)
 
-
-
-### YOUR CODE HERE ###a
-
-run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -56,6 +49,8 @@ x, y = clean_data(ds)
 # TODO: Split data into train and test sets.
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)  
 
+run = Run.get_context()
+
 def main():
     # Add arguments to script
     parser = argparse.ArgumentParser()
@@ -69,6 +64,11 @@ def main():
     run.log("Max iterations:", np.int(args.max_iter))
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
+
+    import joblib
+    if "outputs" not in os.listdir():
+        os.mkdir("./outputs")
+    joblib.dump(model, "./outputs/HyperdriveModel.joblib")
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
