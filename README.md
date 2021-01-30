@@ -48,3 +48,5 @@ There is a difference in accuracy due to the hyperparameter settings provided by
 ## Future work
 Future imrovements: 
   1. For goal_metric, AUC is another very important metric to measure model performance. Evaluating model performance with this metric and maximising this in hyperdrive runs as well as auto-ml runs will give new insights into the model.
+  2. Adding the Predictive Power score(PPS) to accuracy metric.
+  A predictive power score gives us a relative score between a naive model and a tuned model. This will help to gain more confidence in the model performance metric.
