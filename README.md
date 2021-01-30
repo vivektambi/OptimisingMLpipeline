@@ -37,7 +37,7 @@ TO get a detailed understanding of the hyperparamters and their significance in 
 https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html
 
 Architectures for the two models
-![alt text](https://github.com/vivektambi/OptimisingMLpipeline/Pipeline.PNG?raw=true)
+![alt text](https://github.com/vivektambi/OptimisingMLpipeline/blob/master/Pipeline.PNG?raw=true)
 
 ## Pipeline comparison
 Accuracy metric obtained via HyperDrive is better than AutoML. Logistic Regression Hyper-drive performed better than autoML by almost 1 percentage point.
